@@ -10,6 +10,7 @@ FROM node:16-alpine3.15 AS builder
 WORKDIR /app
 COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
+RUN npm install --dev typescript @types/react @types/node
 RUN npm run build
 
 # Production image, copy all the files and run next
